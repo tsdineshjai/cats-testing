@@ -10,7 +10,7 @@ const cardProps = {
 		url: "https://bit.ly/3B9JEMH",
 		alt: "sweet cat",
 	},
-	favored: false,
+	favoured: false,
 };
 
 describe("Card", () => {
@@ -40,15 +40,15 @@ describe("Card", () => {
 	//writing tests to find the filled heart  or outlined heart shaped button
 
 	test("a filled heart", () => {
-		render(<Card {...cardProps} favored={true} />);
-		//passing all the props and passing favored prop to update whatever value we want to pass
+		render(<Card {...cardProps} favoured={true} />);
+		//passing all the props and passing favoured prop to update whatever value we want to pass
 
 		expect(screen.getByAltText(/filled heart/i)).toBeInTheDocument();
 		expect(screen.queryByAltText(/outlined heart/i)).not.toBeInTheDocument();
 	});
 	test("a outlined heart", () => {
-		render(<Card {...cardProps} favored={false} />);
-		//passing all the props and passing favored prop to update whatever value we want to pass
+		render(<Card {...cardProps} favoured={false} />);
+		//passing all the props and passing favoured prop to update whatever value we want to pass
 
 		expect(screen.getByAltText(/outlined heart/i)).toBeInTheDocument();
 		expect(screen.queryByAltText(/filled heart/i)).not.toBeInTheDocument();

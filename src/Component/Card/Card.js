@@ -3,14 +3,14 @@ import "./Card.css";
 import heartFilled from "./svgs/heartFilled.svg";
 import hearOutlined from "./svgs/heartOutlined.svg";
 
-function Card({ name, email, phone, image, favored }) {
-	const [heart, setHeart] = React.useState(favored);
+function Card({ name, email, phone, image, favoured }) {
+	const [heart, setHeart] = React.useState(favoured);
 	const handleClick = (e) => {
 		e.preventDefault();
 		setHeart((prev) => !prev);
 	};
 	return (
-		<div className="card">
+		<article className="card">
 			<div className="card-header">
 				<img src={image.url} alt={image.alt} className="card-img" />
 				<button onClick={handleClick}>
@@ -26,7 +26,7 @@ function Card({ name, email, phone, image, favored }) {
 				<h6>{phone}</h6>
 				<p>{email}</p>
 			</div>
-		</div>
+		</article>
 	);
 }
 
