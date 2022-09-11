@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Card from "../Card";
+import userEvent from "@testing-library/user-event";
 
 const cardProps = {
 	name: "sweeney",
@@ -34,5 +35,33 @@ describe("Card", () => {
 	test("checking the image of the cat", () => {
 		render(<Card {...cardProps} />);
 		expect(screen.getByAltText(/sweet cat/i).src).toBe(cardProps.image.url);
+	});
+
+	//writing tests to find the filled heart  or outlined heart shaped button
+
+	test("a filled heart", () => {
+		render(<Card {...cardProps} favored={true} />);
+		//passing all the props and passing favored prop to update whatever value we want to pass
+
+		expect(screen.getByAltText(/filled heart/i)).toBeInTheDocument();
+		expect(screen.queryByAltText(/outlined heart/i)).not.toBeInTheDocument();
+	});
+	test("a outlined heart", () => {
+		render(<Card {...cardProps} favored={false} />);
+		//passing all the props and passing favored prop to update whatever value we want to pass
+
+		expect(screen.getByAltText(/outlined heart/i)).toBeInTheDocument();
+		expect(screen.queryByAltText(/filled heart/i)).not.toBeInTheDocument();
+	});
+
+	test("toggling of outlined and filled hear", () => {
+		render(<Card {...cardProps} />);
+		userEvent.click(screen.getByRole("button"));
+		expect(screen.getByAltText(/filled heart/i)).toBeInTheDocument();
+		expect(screen.queryByAltText(/outlined heart/i)).not.toBeInTheDocument();
+
+		userEvent.click(screen.getByRole("button"));
+		expect(screen.getByAltText(/outlined heart/i)).toBeInTheDocument();
+		expect(screen.queryByAltText(/filled heart/i)).not.toBeInTheDocument();
 	});
 });
