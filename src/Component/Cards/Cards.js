@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
+import "./Cards.css";
 
 function Cards({ cats }) {
 	return (
@@ -11,7 +12,7 @@ function Cards({ cats }) {
 						key={id}
 						phone={phone}
 						email={email}
-						image={image.url}
+						image={image}
 						favoured={favoured}
 					/>
 				);

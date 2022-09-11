@@ -1,19 +1,12 @@
 import "./App.css";
-import Card from "./Component/Card/Card";
+import Cards from "./Component/Cards/Cards";
+import cats from "./mocks/cats.json";
+
 
 function App() {
 	return (
 		<div className="App">
-			<Card
-				name="sweeney"
-				phone="111-111-121"
-				email="sydney_sweeney@hotmail.com"
-				image={{
-					url: "https://bit.ly/3B9JEMH",
-					alt: "sweet cat",
-				}}
-				favored={false}
-			/>
+			<Cards cats={cats} />
 		</div>
 	);
 }
