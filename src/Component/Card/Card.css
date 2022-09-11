@@ -5,9 +5,33 @@
 
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
-  height:300px;
-  width:250px;
-  
+  padding: 1rem;
+  border: pink solid 3px;
+
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.card-header button {
+  display: inline-flex;
+  background-color: transparent;
+  position: absolute;
+  right: 41%;
+  top: 5%;
+  border: none;
+
+
+}
+
+.card-img {
+  height: 250px;
+  width: 250px;
+  background-size: cover;
 }
