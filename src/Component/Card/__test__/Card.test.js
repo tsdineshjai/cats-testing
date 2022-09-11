@@ -4,7 +4,7 @@ import Card from "../Card";
 const cardProps = {
 	name: "sweeney",
 	phone: "111-111-121",
-	mail: "sydney_sweeney@hotmail.com",
+	email: "sydney_sweeney@hotmail.com",
 	image: {
 		url: "https://bit.ly/3B9JEMH",
 		alt: "sweet cat",
@@ -29,5 +29,10 @@ describe("Card", () => {
 	test("checking the email of the cat", () => {
 		render(<Card {...cardProps} />);
 		expect(screen.getByText(/sydney_sweeney@hotmail.com/i)).toBeInTheDocument();
+	});
+
+	test("checking the image of the cat", () => {
+		render(<Card {...cardProps} />);
+		expect(screen.getByAltText(/sweet cat/i).src).toBe(cardProps.image.url);
 	});
 });
