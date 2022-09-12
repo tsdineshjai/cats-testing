@@ -1,6 +1,6 @@
 import React from "react";
 
-function Filter() {
+function Filter({ filters, setFilters }) {
 	return (
 		<div className="filter">
 			<label htmlFor="favourite">Favourite</label>
@@ -11,7 +11,16 @@ function Filter() {
 			</select>
 
 			<label htmlFor="gender">Gender</label>
-			<select name="gender" id="gender">
+			<select
+				name="gender"
+				id="gender"
+				onChange={(e) => {
+					setFilters({
+						...filters,
+						gender: e.target.value,
+					});
+				}}
+			>
 				<option value="any">Any</option>
 				<option value="male">Male</option>
 				<option value="female">Female</option>

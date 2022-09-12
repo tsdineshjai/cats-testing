@@ -1,10 +1,12 @@
+/* eslint-disable testing-library/no-render-in-setup */
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Filter from "../Filter";
 
+beforeEach(() => render(<Filter filters={{}} setFilters={() => {}} />));
+
 describe("Filter", () => {
 	test("checking values for favoriute", () => {
-		render(<Filter />);
 		const select = screen.getByLabelText(/favourite/i);
 		expect(select.value).toBe("any");
 
@@ -15,7 +17,6 @@ describe("Filter", () => {
 		expect(select.value).toBe("non favoured");
 	});
 	test("checking values for gender", () => {
-		render(<Filter />);
 		const select = screen.getByLabelText(/gender/i);
 		expect(select.value).toBe("any");
 
