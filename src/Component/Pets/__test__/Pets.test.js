@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-render-in-setup */
-import { screen, render } from "@testing-library/react";
+import { screen, render, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import Pets from "../Pets";
@@ -40,5 +40,18 @@ describe("Pets", () => {
 			cards[2],
 			cards[4],
 		]);
+	});
+
+	//the below test logic is first we find the cards, then click favored button on the cards we want
+	//then we filtering using favored cats and expecting us same array of having favored cats.
+
+	test("should fiter for favored cats", async () => {
+		const cards = await screen.findAllByRole("article");
+
+		//nesting queries; because we queried to get cards and now are querying within cards
+		userEvent.click(within(cards[0]).getByRole("button"));
+		userEvent.click(within(cards[3]).getByRole("button"));
+		userEvent.selectOptions(screen.getByLabelText(/Favourite/i), "favoured");
+		expect(cards).toStrictEqual([cards[0], cards[3]]);
 	});
 });

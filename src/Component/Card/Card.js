@@ -3,11 +3,13 @@ import "./Card.css";
 import heartFilled from "./svgs/heartFilled.svg";
 import hearOutlined from "./svgs/heartOutlined.svg";
 
-function Card({ name, email, phone, image, favoured }) {
+function Card({ name, email, phone, image, favoured, updateFavored, index }) {
 	const [heart, setHeart] = React.useState(favoured);
 	const handleClick = (e) => {
 		e.preventDefault();
-		setHeart((prev) => !prev);
+		console.log(e.target);
+		updateFavored(index, !heart);
+		setHeart(!heart); 
 	};
 	return (
 		<article className="card">

@@ -4,7 +4,16 @@ function Filter({ filters, setFilters }) {
 	return (
 		<div className="filter">
 			<label htmlFor="favourite">Favourite</label>
-			<select name="favourite" id="favourite">
+			<select
+				name="favourite"
+				id="favourite"
+				onChange={(e) => {
+					setFilters({
+						...filters,
+						favourite: e.target.value,
+					});
+				}}
+			>
 				<option value="any">Any</option>
 				<option value="favoured">Favoured</option>
 				<option value="non favoured">non Favoured</option>
